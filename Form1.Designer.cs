@@ -28,12 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            button1 = new Button();
+            EchoMessege = new Label();
+            listBox1 = new ListBox();
+            txtmsg = new TextBox();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(609, 333);
+            button1.Name = "button1";
+            button1.Size = new Size(149, 67);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // EchoMessege
+            // 
+            EchoMessege.Font = new Font("맑은 고딕", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            EchoMessege.ForeColor = Color.Blue;
+            EchoMessege.Location = new Point(31, 23);
+            EchoMessege.Name = "EchoMessege";
+            EchoMessege.Size = new Size(191, 60);
+            EchoMessege.TabIndex = 1;
+            EchoMessege.Text = "EchoMessege";
+            EchoMessege.Click += label1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(31, 86);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(716, 204);
+            listBox1.TabIndex = 2;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // txtmsg
+            // 
+            txtmsg.Location = new Point(31, 345);
+            txtmsg.Name = "txtmsg";
+            txtmsg.Size = new Size(572, 23);
+            txtmsg.TabIndex = 3;
+            txtmsg.TextChanged += textBox1_TextChanged;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtmsg);
+            Controls.Add(listBox1);
+            Controls.Add(EchoMessege);
+            Controls.Add(button1);
+            Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button button1;
+        private Label EchoMessege;
+        private ListBox listBox1;
+        private TextBox txtmsg;
     }
 }
