@@ -26,7 +26,7 @@ namespace EchoMessenger
         private void Form1_Load(object sender, EventArgs e)
         {
             Text = "Echo Messenger";
-            EchoMessege.Text = "Echo Messenger";
+            EchoMessenger.Text = "Echo Messenger";
             button1.Text = "전송";
             btnDelete.Text = "삭제";
             btnClear.Text = "대화 기록 삭제";

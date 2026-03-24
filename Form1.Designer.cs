@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            EchoMessege = new Label();
+            EchoMessenger = new Label();
             listBox1 = new ListBox();
             txtmsg = new TextBox();
             lblCount = new Label();
@@ -48,22 +48,21 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // EchoMessege
+            // EchoMessenger
             // 
-            EchoMessege.Font = new Font("맑은 고딕", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            EchoMessege.ForeColor = Color.Blue;
-            EchoMessege.Location = new Point(31, 23);
-            EchoMessege.Name = "EchoMessege";
-            EchoMessege.Size = new Size(191, 60);
-            EchoMessege.TabIndex = 1;
-            EchoMessege.Text = "EchoMessege";
-            EchoMessege.Click += label1_Click;
+            EchoMessenger.Font = new Font("맑은 고딕", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            EchoMessenger.ForeColor = Color.Blue;
+            EchoMessenger.Location = new Point(31, 23);
+            EchoMessenger.Name = "EchoMessenger";
+            EchoMessenger.Size = new Size(263, 60);
+            EchoMessenger.TabIndex = 1;
+            EchoMessenger.Text = "EchoMessege";
+            EchoMessenger.Click += label1_Click;
             // 
             // listBox1
             // 
             listBox1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
             listBox1.Location = new Point(31, 86);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(716, 204);
@@ -73,8 +72,8 @@
             // txtmsg
             // 
             txtmsg.Location = new Point(31, 335);
-            txtmsg.Name = "txtmsg";
             txtmsg.Multiline = true;
+            txtmsg.Name = "txtmsg";
             txtmsg.Size = new Size(572, 63);
             txtmsg.TabIndex = 3;
             txtmsg.TextChanged += textBox1_TextChanged;
@@ -85,7 +84,7 @@
             lblCount.AutoSize = true;
             lblCount.Location = new Point(31, 416);
             lblCount.Name = "lblCount";
-            lblCount.Size = new Size(94, 15);
+            lblCount.Size = new Size(85, 15);
             lblCount.TabIndex = 4;
             lblCount.Text = "현재 대화: 0개";
             // 
@@ -114,7 +113,7 @@
             lblLength.AutoSize = true;
             lblLength.Location = new Point(31, 315);
             lblLength.Name = "lblLength";
-            lblLength.Size = new Size(101, 15);
+            lblLength.Size = new Size(92, 15);
             lblLength.TabIndex = 7;
             lblLength.Text = "입력 길이: 0/50";
             // 
@@ -129,7 +128,7 @@
             Controls.Add(lblCount);
             Controls.Add(txtmsg);
             Controls.Add(listBox1);
-            Controls.Add(EchoMessege);
+            Controls.Add(EchoMessenger);
             Controls.Add(button1);
             Name = "Form1";
             Text = "에코 메신저";
@@ -141,7 +140,7 @@
         #endregion
 
         private Button button1;
-        private Label EchoMessege;
+        private Label EchoMessenger;
         private ListBox listBox1;
         private TextBox txtmsg;
         private Label lblCount;
