@@ -67,9 +67,10 @@
             // 
             // txtmsg
             // 
-            txtmsg.Location = new Point(31, 345);
+            txtmsg.Location = new Point(31, 335);
             txtmsg.Name = "txtmsg";
-            txtmsg.Size = new Size(572, 23);
+            txtmsg.Multiline = true;
+            txtmsg.Size = new Size(572, 63);
             txtmsg.TabIndex = 3;
             txtmsg.TextChanged += textBox1_TextChanged;
             // 
@@ -83,7 +84,7 @@
             Controls.Add(EchoMessege);
             Controls.Add(button1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "에코 메신저";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

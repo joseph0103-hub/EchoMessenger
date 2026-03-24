@@ -5,8 +5,8 @@ namespace EchoMessenger
     public partial class Form1 : Form
     {
         private object typed_msg;
-        private object stringtyped_msg;
-        private object mylistBox;
+        private object stringtyped_msg; // 입력 테스트
+        private object mylistBox; // 리스트 박스
 
         public Form1()
         {
