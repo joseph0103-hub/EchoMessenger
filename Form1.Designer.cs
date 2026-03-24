@@ -32,6 +32,7 @@
             EchoMessege = new Label();
             listBox1 = new ListBox();
             txtmsg = new TextBox();
+            lblCount = new Label();
             SuspendLayout();
             // 
             // button1
@@ -59,6 +60,7 @@
             // 
             listBox1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
             listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 20;
             listBox1.Location = new Point(31, 86);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(716, 204);
@@ -72,14 +74,24 @@
             txtmsg.Multiline = true;
             txtmsg.Size = new Size(572, 63);
             txtmsg.TabIndex = 3;
-            txtmsg.TextChanged += textBox1_TextChanged;
+            //txtmsg.TextChanged += textBox1_TextChanged;
             txtmsg.KeyDown += txtmsg_KeyDown;
+            // 
+            // lblCount
+            // 
+            lblCount.AutoSize = true;
+            lblCount.Location = new Point(31, 416);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(94, 15);
+            lblCount.TabIndex = 4;
+            lblCount.Text = "현재 대화: 0개";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblCount);
             Controls.Add(txtmsg);
             Controls.Add(listBox1);
             Controls.Add(EchoMessege);
@@ -97,5 +109,6 @@
         private Label EchoMessege;
         private ListBox listBox1;
         private TextBox txtmsg;
+        private Label lblCount;
     }
 }

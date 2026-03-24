@@ -26,6 +26,7 @@ namespace EchoMessenger
             Text = "Echo Messenger";
             EchoMessege.Text = "Echo Messenger";
             button1.Text = "전송";
+            UpdateMessageCount();
             txtmsg.Focus();
         }
 
@@ -36,11 +37,7 @@ namespace EchoMessenger
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string typed_msg;
-            typed_msg = txtmsg.Text;
-            listBox1.Items.Add(typed_msg);
-            txtmsg.Clear();
-            txtmsg.Focus();
+            SendMessage();
         }
 
         private void txtmsg_KeyDown(object sender, KeyEventArgs e)
@@ -54,7 +51,7 @@ namespace EchoMessenger
 
         private void SendMessage()
         {
-            string typed_msg = txtmsg.Text;
+            string typed_msg = txtmsg.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(typed_msg))
             {
@@ -63,9 +60,16 @@ namespace EchoMessenger
                 return;
             }
 
-            listBox1.Items.Add(typed_msg);
+            string messageWithTime = $"[{DateTime.Now:HH:mm:ss}] {typed_msg}";
+            listBox1.Items.Add(messageWithTime);
             txtmsg.Clear();
             txtmsg.Focus();
+            UpdateMessageCount();
+        }
+
+        private void UpdateMessageCount()
+        {
+            lblCount.Text = $"현재 대화: {listBox1.Items.Count}개";
         }
 
         private void Form1_Shown(object sender, EventArgs e)

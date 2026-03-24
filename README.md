@@ -10,6 +10,7 @@
 **입력창 초기화 및 포커스 이동** 기능을 중심으로 구현하였습니다.
 
 ---
+---
 
 ## 2. 개발 환경
 
@@ -18,6 +19,7 @@
 - IDE : Visual Studio 2026
 - Version Control : GitHub
 
+---
 ---
 
 ## 과제 1. 실행 화면
@@ -77,13 +79,8 @@ private void button1_Click(object sender, EventArgs e)
     txtmsg.Focus();
 }
 
-
-
-
-
-
-
-
+---
+---
 
 ## 과제 2. 실행 화면
 ### 과제 2-1. 처음 실행 화면
@@ -91,11 +88,11 @@ private void button1_Click(object sender, EventArgs e)
 Shown 이벤트에서 포커스를 주어 처음 Form 로딩시 입력창에 포커스가 가도록 기능 추가
 
 ### 과제 2-2. 입력 방어 기능
-![스페이스입력](img/Assignment_2_before_sending.png)
+![스페이스입력](img/Assignment_2_before_sending.png) 
 스페이스 문자 입력시 메시지가 전송되지 않도록 기능 추가
 
 ### 과제 2-3. 메시지 출력
-![스페이스입력 전송](img/Assignment_2_after_sending.png)
+![스페이스입력 전송](img/Assignment_2_after_sending.png) 
 스페이스 문자 입력시 메시지가 전송되지 않은 결과 화면
 
 ---
@@ -139,4 +136,65 @@ private void SendMessage()
         return;
     }
     . . . . .
+}
+
+---
+---
+
+## 과제 3. 실행 화면
+### 과제 3-1. 타임스탬프와 메시지 카운팅
+![타임스탬프와 메시지 카운팅](img/Assignment_3_timestamp&count.png) 
+리스트박스에 타입스탬프를 표시하고 폼의 하단에 리스트에 쌓인 총 메시지 개수를 실시간 업데이트
+
+### 과제 3-2. 문자열 정제(입력)
+![스페이스포함 문자열 입력](img/Assignment_3_before_include_space.png) 
+입력창에 스페이스를 문자열 앞뒤로 입력
+
+### 과제 3-3. 문자열 정제(출력)
+![스페이스포함 문자열 출력](img/Assignment_3_after_include_space.png) 
+스페이스를 제거하고 리스트박스에 출력
+
+---
+
+## 과제 3. 구현한 기능
+
+### 과제 3-1. 타임스탬프
+현재시간과 입력메시지를 리스트박스에 Add
+
+### 과제 3-2. 메시지 카운팅
+ - 메시지 카운팅 라벨 추가
+ - 리스트박스 Count를 실시간으로 보여줌
+
+### 과제 3-3. 문자열 정제
+Trim API 함수를 이용하여 입력한 테스트으의 스트링을 정제
+
+---
+
+## 과제 3. 소스 코드 설명
+
+* 타임스탬프 추가의 핵심 코드는 아래와 같습니다.
+
+private void SendMessage()
+{
+    . . . . 
+    string messageWithTime = $"[{DateTime.Now:HH:mm:ss}] {typed_msg}";
+    listBox1.Items.Add(messageWithTime);
+    . . . . 
+}
+
+* 메시지 카운팅의 핵심 코드는 아래와 같습니다.
+
+private void UpdateMessageCount()
+{
+    lblCount.Text = $"현재 대화: {listBox1.Items.Count}개";
+}
+
+SendMessage 함수에서 UpdateMessageCount 함수를 호출합니다.
+
+* 문자열 정제의 핵심 코드는 아래와 같습니다.
+
+private void SendMessage()
+{
+    string typed_msg = txtmsg.Text.Trim();
+    . . . . 
 }
