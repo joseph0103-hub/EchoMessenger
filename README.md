@@ -76,3 +76,67 @@ private void button1_Click(object sender, EventArgs e)
     txtmsg.Clear();
     txtmsg.Focus();
 }
+
+
+
+
+
+
+
+
+
+## 과제 2. 실행 화면
+### 과제 2-1. 처음 실행 화면
+![처음](img/Assignment_2_start.png)
+Shown 이벤트에서 포커스를 주어 처음 Form 로딩시 입력창에 포커스가 가도록 기능 추가
+
+### 과제 2-2. 입력 방어 기능
+![스페이스입력](img/Assignment_2_before_sending.png)
+스페이스 문자 입력시 메시지가 전송되지 않도록 기능 추가
+
+### 과제 2-3. 메시지 출력
+![스페이스입력 전송](img/Assignment_2_after_sending.png)
+스페이스 문자 입력시 메시지가 전송되지 않은 결과 화면
+
+---
+
+## 과제 2. 구현한 기능
+
+### 과제 2-1. 엔터키로 전송하기
+txtmsg_KeyDown 이벤트 핸들러를 추가하여 사용자가 엔터키를 눌렀을 때 메시지가 전송되도록 구현
+
+### 과제 2-2. 입력방어 기능
+string.IsNullOrWhiteSpace API를 사용하여 입력된 메시지가 공백이거나 비어있는 경우 메시지가 전송되지 않도록 구현
+
+### 과제 2-3. 폼 처음 로드시 입력창에 포커스 기능 추가
+생성자에 Shown 이벤트 등록 및 Shown 이벤트 핸들러 추가하여 폼이 처음 로드될 때 입력창에 포커스가 가도록 구현
+
+---
+
+## 과제 2. 소스 코드 설명
+
+* 엔터키로 전송 이벤트의 핵심 코드는 아래와 같습니다.
+
+private void txtmsg_KeyDown(object sender, KeyEventArgs e)
+{
+    if (e.KeyCode == Keys.Enter)
+    {
+        e.SuppressKeyPress = true;
+        SendMessage();
+    }
+}
+
+* 입력방어 기능의 핵심 코드는 아래와 같습니다.
+
+private void SendMessage()
+{
+    string typed_msg = txtmsg.Text;
+
+    if (string.IsNullOrWhiteSpace(typed_msg))
+    {
+        txtmsg.Clear();
+        txtmsg.Focus();
+        return;
+    }
+    . . . . .
+}

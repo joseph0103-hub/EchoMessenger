@@ -4,13 +4,11 @@ namespace EchoMessenger
 {
     public partial class Form1 : Form
     {
-        private object typed_msg;
-        private object stringtyped_msg; // 입력 테스트
-        private object mylistBox; // 리스트 박스
-
         public Form1()
         {
             InitializeComponent();
+            this.Shown += Form1_Shown;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -25,7 +23,10 @@ namespace EchoMessenger
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Text = "Echo Messenger";
+            EchoMessege.Text = "Echo Messenger";
+            button1.Text = "전송";
+            txtmsg.Focus();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,6 +40,37 @@ namespace EchoMessenger
             typed_msg = txtmsg.Text;
             listBox1.Items.Add(typed_msg);
             txtmsg.Clear();
+            txtmsg.Focus();
+        }
+
+        private void txtmsg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SendMessage();
+            }
+        }
+
+        private void SendMessage()
+        {
+            string typed_msg = txtmsg.Text;
+
+            if (string.IsNullOrWhiteSpace(typed_msg))
+            {
+                txtmsg.Clear();
+                txtmsg.Focus();
+                return;
+            }
+
+            listBox1.Items.Add(typed_msg);
+            txtmsg.Clear();
+            txtmsg.Focus();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtmsg;
             txtmsg.Focus();
         }
     }

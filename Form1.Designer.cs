@@ -73,6 +73,7 @@
             txtmsg.Size = new Size(572, 63);
             txtmsg.TabIndex = 3;
             txtmsg.TextChanged += textBox1_TextChanged;
+            txtmsg.KeyDown += txtmsg_KeyDown;
             // 
             // Form1
             // 
