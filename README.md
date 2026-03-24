@@ -84,22 +84,23 @@ private void button1_Click(object sender, EventArgs e)
     txtmsg.Clear();
     txtmsg.Focus();
 }
+```
+---
+---
 
----
----
 
 ## 과제 2. 실행 화면
 ### 과제 2-1. 처음 실행 화면
-![처음](img/Assignment_2_start.png)
+![처음](img/Assignment_2_start.png) 
 Shown 이벤트에서 포커스를 주어 처음 Form 로딩시 입력창에 포커스가 가도록 기능 추가
 
 ### 과제 2-2. 입력 방어 기능
-![스페이스입력](img/Assignment_2_before_sending.png)
+![스페이스입력](img/Assignment_2_before_sending.png) 
 
 스페이스 문자 입력시 메시지가 전송되지 않도록 기능 추가
 
 ### 과제 2-3. 메시지 출력
-![스페이스입력 전송](img/Assignment_2_after_sending.png)
+![스페이스입력 전송](img/Assignment_2_after_sending.png) 
 
 스페이스 문자 입력시 메시지가 전송되지 않은 결과 화면
 
@@ -145,7 +146,7 @@ private void SendMessage()
     }
     . . . . .
 }
-
+```
 ---
 ---
 
@@ -209,3 +210,4 @@ private void SendMessage()
     string typed_msg = txtmsg.Text.Trim();
     . . . . 
 }
+```
