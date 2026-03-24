@@ -102,7 +102,7 @@ Shown 이벤트에서 포커스를 주어 처음 Form 로딩시 입력창에 포
 ### 과제 2-3. 메시지 출력
 ![스페이스입력 전송](img/Assignment_2_after_sending.png) 
 
-스페이스 문자 입력시 메시지가 전송되지 않은 결과 화면
+스페이스 문자만 입력후 전송시 메시지가 전송되지 않은 결과 화면
 
 ---
 
@@ -211,3 +211,89 @@ private void SendMessage()
     . . . . 
 }
 ```
+---
+---
+
+## 과제 4. 실행 화면
+### 과제 4-1. 삭제할 항목 선택
+![대화리스트에서 삭제할 항목 선택](img/Assignment_4_before_DeleteSelectedItem.png)
+
+대화리스트에서 삭제할 선택된 항목을 삭제
+
+### 과제 4-2. 선택 항목 삭제 후 화면
+![대화리스트에서 선택 항목 삭제 후 화면](img/Assignment_4_after_DeleteSelectedItem.png)
+
+삭제 후 화면
+
+### 과제 4-3. 전체 초기화
+![대화리스트에서 모든 대화를 삭제](img/Assignment_4_DeleteChatHistory.png)
+
+대화리스트에서 있던 모든 대화를 삭제한 화면
+
+### 과제 4-4. 글자 수 제한
+![글자 수 제한](img/Assignment_4_50CharacterLimit.png)
+
+입력창에 글자 수 제한을 50자로 설정하여 50자 이상 입력이 불가능하도록 구현
+
+---
+
+## 과제 4. 구현한 기능
+
+### 과제 4-1. 선택 항목 삭제
+삭제 버튼 이벤트 함수 등록 및 이벤트 핸들러 추가하여 리스트박스에서 선택된 항목 삭제 기능 구현
+
+### 과제 4-2. 전체 초기화
+전체 삭제 버튼 이벤트 함수 등록 및 이벤트 핸들러 추가하여 리스트박스에 있는 모든 항목 삭제 기능 구현
+
+### 과제 4-3. 글자 수 제한
+입력창의 MaxLength 속성을 50으로 설정하여 글자 수 제한 기능 구현
+
+---
+
+## 과제 4. 소스 코드 설명
+
+* 선택 항목 삭제의 핵심 코드는 아래와 같습니다.
+```csharp
+private void btnDelete_Click(object sender, EventArgs e)
+{
+    if (listBox1.SelectedIndex < 0)
+    {
+        MessageBox.Show("삭제할 메시지를 먼저 선택하세요.", "안내", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        return;
+    }
+
+    listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+    . . . . 
+}
+
+* 전체 초기화의 핵심 코드는 아래와 같습니다.
+```csharp
+private void btnClear_Click(object sender, EventArgs e)
+{
+    if (listBox1.Items.Count == 0)
+    {
+        MessageBox.Show("삭제할 대화 기록이 없습니다.", "안내", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        txtmsg.Focus();
+        return;
+    }
+
+    listBox1.Items.Clear();
+    . . . . 
+}
+
+* 글자 수 제한의 핵심 코드는 아래와 같습니다.
+```csharp
+private const int MaxMessageLength = 50;
+    . . . . 
+
+private void SendMessage()
+{
+    . . . . 
+
+    if (typed_msg.Length > MaxMessageLength)
+    {
+        MessageBox.Show($"메시지는 {MaxMessageLength}자 이하로 입력하세요.", "입력 제한", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        txtmsg.Focus();
+        txtmsg.SelectionStart = txtmsg.TextLength;
+        return;
+    }

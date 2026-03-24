@@ -4,6 +4,8 @@ namespace EchoMessenger
 {
     public partial class Form1 : Form
     {
+        private const int MaxMessageLength = 50;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace EchoMessenger
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            lblLength.Text = $"입력 길이: {txtmsg.TextLength}/{MaxMessageLength}";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,6 +28,9 @@ namespace EchoMessenger
             Text = "Echo Messenger";
             EchoMessege.Text = "Echo Messenger";
             button1.Text = "전송";
+            btnDelete.Text = "삭제";
+            btnClear.Text = "대화 기록 삭제";
+            txtmsg.MaxLength = MaxMessageLength;
             UpdateMessageCount();
             txtmsg.Focus();
         }
@@ -49,6 +54,33 @@ namespace EchoMessenger
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("삭제할 메시지를 먼저 선택하세요.", "안내", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            UpdateMessageCount();
+            txtmsg.Focus();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count == 0)
+            {
+                MessageBox.Show("삭제할 대화 기록이 없습니다.", "안내", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtmsg.Focus();
+                return;
+            }
+
+            listBox1.Items.Clear();
+            UpdateMessageCount();
+            txtmsg.Focus();
+        }
+
         private void SendMessage()
         {
             string typed_msg = txtmsg.Text.Trim();
@@ -57,6 +89,14 @@ namespace EchoMessenger
             {
                 txtmsg.Clear();
                 txtmsg.Focus();
+                return;
+            }
+
+            if (typed_msg.Length > MaxMessageLength)
+            {
+                MessageBox.Show($"메시지는 {MaxMessageLength}자 이하로 입력하세요.", "입력 제한", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtmsg.Focus();
+                txtmsg.SelectionStart = txtmsg.TextLength;
                 return;
             }
 
